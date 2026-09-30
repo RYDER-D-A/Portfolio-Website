@@ -93,11 +93,18 @@ const projects = [
         page: {
             image: 'Assets/AviationSeat.jpg',
             paragraphs: [
-                "Placeholder description for the Aviation Seating Industry project."
+                "This project consisted of two parts, both focused on economic, environmental and social sustainability. The main part was completed as group work and explored the aviation seating industry as a whole, while the secondary part was completed individually.",
+                "Note: The research and design work shown here was developed over the full project period; the submitted individual report was assembled under a very short turnaround alongside several concurrent deadlines, including my Gizmo project.",
+                "The industry report consisted of broad secondary research, conversations with industry leaders, and the dismantling of a commercial-grade economy seat. As a team member, I focused on the broader aviation and supply-chain research, as well as the material research. I also played a large role in the disassembly of the seat. The teardown identified problems including material identification, corrosion, adhesives, non-standardised fasteners and excessive tool changes.",
+                "My main interest throughout the project was the consequences of the secrecy required within a highly competitive industry, particularly the economic and environmental losses it can create, as well as the inefficiencies it introduces at end of life.",
+                "My individual solution explored a blockchain-based database that would allow trusted partners to share private information relating to material identification without openly exposing sensitive company data. This would allow disassemblers to understand what materials they were working with and separate them more effectively.",
+                "The second focus of my individual work was reducing corrosion and disassembly time by redesigning parts of the seat to make end-of-life recovery more economically viable. This included investigating alternative fasteners, material choices, sacrificial adhesive interfaces and a more structured disassembly sequence.",
+                "This was particularly important because our research identified that, at one point, around 1.5 million aircraft seats were in storage, where prolonged storage can contribute to corrosion and further reduce their recycling value."
             ],
             collaborators: ['Aidan Ryder', 'Kyara Surtani', 'Lucian Brand', 'Muk Vivatanaprasert', 'Yasmin Fryer'],
             outputs: [
-                { label: 'Industry Research', href: 'Files/Aviation seating industry.pdf' }
+                { label: 'Industry Research', href: 'Files/Aviation seating industry.pdf' },
+                { label: 'Solution Report', href: 'Files/Aviation Solution Report.pdf' }
             ]
         }
     },
