@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang ="en-gb">
+	<head>
+		<meta charset="utf-8">
+		<title>Your Web-app Title</title>
+		<link rel="stylesheet" href="default.css">
+		<link rel="icon" href="./assets/favicon.png">
+		<link href="https://fonts.googleapis.com/css2?family=Jaro&family=Itim&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+		<script type="module" src="main.js"></script>
+	</head>
+    <body>
+		<header class="control-panel">
+			<nav class="nav-buttons">
+				<button data-target="home" class="active">Home</button>
+				<button data-target="projects">Projects</button>
+				<button data-target="about">About</button>
+				<button data-target="contact">Contact</button>
+			</nav>
+			<a class="cv-link" href="Files/AidanRyderCV.pdf" target="_blank" rel="noopener">CV</a>
+		</header>
+		<main>
+			<section id="home" class="screen">
+				<div class="title">
+					<h1>Aidan Ryder</h1>
+					<h2>Design Engineer</h2>
+				</div>
+				<div class="home-card">
+					<div class="line"></div>
+					<p>
+						Hi, my name is Aidan. I'm a
+						design engineer at Imperial
+						College London.
+					</p>
+				</div>
+				<div class="home-image-frame">
+					<img src="Assets/image 125.png" alt="Aidan Ryder working" class="home-image">
+				</div>
+			</section>
+			<section id="projects" class="screen hidden">
+					<div class="page-title">
+						<h1>Projects</h1>
+					</div>
+					<div class="projects-table">
+						<div class="projects-header">
+							<span class="col-name">Name</span>
+							<span class="col-type">Type</span>
+							<span class="col-details">Details</span>
+						</div>
+						<div class="projects-divider projects-divider--1"></div>
+						<div class="projects-divider projects-divider--2"></div>
+						<div class="projects-body" id="projects-body"></div>
+					</div>
+			</section>
+			<section id="project-detail" class="screen hidden">
+					<div class="page-title">
+						<h1 id="project-detail-title"></h1>
+					</div>
+					<div class="project-detail-body">
+						<div class="project-detail-left">
+							<div class="project-image-frame">
+								<img id="project-detail-image" class="hidden" alt="">
+							</div>
+							<h3 class="project-outputs-heading" id="project-outputs-heading">Project Outputs:</h3>
+							<ul class="project-outputs" id="project-outputs"></ul>
+						</div>
+						<div class="project-detail-right">
+							<div class="project-detail-line"></div>
+							<div class="project-detail-text" id="project-detail-text"></div>
+						</div>
+					</div>
+					<p class="project-collaborators" id="project-collaborators"></p>
+			</section>
+			<section id="about" class="screen hidden"></section>
+			<section id="contact" class="screen hidden"></section>
+		</main>
+    </body>
