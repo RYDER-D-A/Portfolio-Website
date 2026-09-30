@@ -157,6 +157,7 @@ function showScreen(id, navId = id) {
     screens.forEach(screen => {
         screen.classList.toggle('hidden', screen.id !== id);
     });
+    document.getElementById(id).scrollTop = 0;
 
     navButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.target === navId);

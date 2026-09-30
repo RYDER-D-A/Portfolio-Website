@@ -3,6 +3,7 @@
     --font-md: clamp(0.8rem, 2.2vh, 1.5rem);
     --font-sm: 1rem;
     --font-title: clamp(2rem, 5vw, 3.5rem);
+    --header-h: 12.5vh;
 }
 
 * {
@@ -17,10 +18,11 @@
     z-index: 1;
     margin: 0;
     width: 100%;
-    height: 87.5vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: fixed;
-    top: 12.5vh;
+    top: var(--header-h);
+    bottom: 0;
     left: 0;
     background-color: #0E0D0F;
 }
@@ -36,7 +38,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 12.5vh;
+    height: var(--header-h);
     background-color: #151515;
     display: flex;
     align-items: center;
@@ -163,11 +165,14 @@
 .projects-table {
     --col-name: 20%;
     --col-type: 16%;
-    position: absolute;
-    top: 24vh;
-    left: 6%;
+    position: relative;
+    margin: 24vh 0 0 6%;
     width: 62vw;
     min-height: 30vh;
+}
+
+#projects {
+    padding-bottom: 6vh;
 }
 
 .projects-header {
@@ -250,10 +255,14 @@
     transform: translateX(4px);
 }
 
+#project-detail {
+    display: flex;
+    flex-direction: column;
+}
+
 .project-detail-body {
-    position: absolute;
-    top: 22vh;
-    left: 6%;
+    flex-shrink: 0;
+    margin: 22vh 0 0 6%;
     width: 88%;
     display: flex;
     gap: 4%;
@@ -332,13 +341,153 @@
 }
 
 .project-collaborators {
-    position: absolute;
-    bottom: 4vh;
-    left: 0;
-    width: 100%;
-    padding-right: 6%;
+    flex-shrink: 0;
+    margin-top: auto;
+    padding: 4vh 6% 4vh 0;
     text-align: right;
     font-size: 0.85rem;
     font-weight: 300;
     opacity: 0.6;
+}
+
+/* ---------- Tablets & phones ---------- */
+@media (max-width: 900px) {
+    :root {
+        --font-lg: clamp(2.75rem, 13vw, 4.5rem);
+        --font-md: 1rem;
+        --font-title: clamp(2rem, 9vw, 3rem);
+        --header-h: 3.5rem;
+    }
+
+    .control-panel {
+        padding-left: 0.5rem;
+    }
+
+    .nav-buttons {
+        gap: 0;
+    }
+
+    .nav-buttons button,
+    .cv-link {
+        font-size: 0.95rem;
+        padding: 0.5em 0.6em;
+    }
+
+    .cv-link {
+        margin-right: 0.5rem;
+    }
+
+    .screen {
+        padding: 2rem 1.25rem 3rem;
+    }
+
+    /* Put everything back into normal flow so it stacks */
+    .title,
+    .home-card,
+    .home-image-frame,
+    .page-title,
+    .projects-table,
+    .project-detail-body {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    /* Home */
+    .home-card {
+        margin-top: 2rem;
+    }
+
+    .home-card .line {
+        width: 60%;
+    }
+
+    .home-card p {
+        width: auto;
+        max-width: 32rem;
+    }
+
+    .home-image-frame {
+        margin-top: 2rem;
+    }
+
+    /* Page titles */
+    .page-title {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Projects: one stacked card per row instead of three columns */
+    .projects-header,
+    .projects-divider {
+        display: none;
+    }
+
+    .projects-table {
+        min-height: 0;
+    }
+
+    .project-row {
+        grid-template-columns: 1fr auto;
+        gap: 0.35rem 1rem;
+        padding: 1rem 0.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .project-row .col-name {
+        font-weight: 400;
+    }
+
+    .project-row .col-type {
+        padding-left: 0;
+        font-size: 0.85rem;
+        opacity: 0.6;
+    }
+
+    .project-row .col-details {
+        grid-column: 1 / -1;
+        padding: 0;
+        gap: 1rem;
+        font-size: 0.85rem;
+        opacity: 0.75;
+    }
+
+    .project-row:hover {
+        transform: none;
+    }
+
+    /* Project detail: image, then text, then outputs */
+    .project-detail-body {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project-detail-left {
+        display: contents;
+    }
+
+    .project-image-frame {
+        order: 1;
+    }
+
+    .project-detail-right {
+        order: 2;
+    }
+
+    .project-outputs-heading {
+        order: 3;
+        margin-top: 0;
+        margin-bottom: -1rem;
+    }
+
+    .project-outputs {
+        order: 4;
+        margin: 0;
+    }
+
+    .project-collaborators {
+        padding: 2rem 0 0;
+        text-align: left;
+    }
 }
