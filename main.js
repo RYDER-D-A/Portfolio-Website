@@ -124,7 +124,13 @@ const projects = [
         page: {
             image: 'Assets/Rhythm Rush.jpg',
             paragraphs: [
-                "Placeholder description for the Rhythm Rush project."
+                "Rhythm Rush was split into two 10-week stages: a research phase and a prototyping phase.",
+                "The research phase began with the broad brief of urban play, requiring our team to identify a meaningful user group and opportunity area. We initially focused on elderly users, but after reaching a dead end we made a rapid decision to pivot towards digital urban play.",
+                "This led us to study Outernet London, where I personally led over 20 public interviews alongside Ruaridh, supported by behavioural observations. We found that while many people said they were open to interacting with strangers, very few actually initiated interaction in public spaces. Further research suggested that people first needed to perceive a setting as inherently social, such as a bar, concert or event, before interaction felt natural.",
+                "We then identified event queues as an interesting middle ground: people shared a common interest and had unavoidable downtime, but still lacked enough incentive to interact. This led us to hypothesise that games could act as a social lubricant. We tested this through public experiments comparing conventional conversation-based interaction with multiplayer games. The gaming condition produced significantly more engagement, attracted spectators and encouraged more natural conversation.",
+                "These findings drove our ideation process and eventually led to Rhythm Rush: a motion-tracked dance game designed to encourage low-pressure social interaction within event queues.",
+                "The second half of the project focused on prototyping, development and user validation. Throughout the project, I led much of the research strategy, identifying the next most valuable questions to investigate and planning user-testing activities around them. I also led the physical looks-like development, using low-fidelity prototypes to determine the product's scale and overall form before developing the CAD design with continued user input.",
+                "The final concept combined physical queue infrastructure with a large interactive display and body-tracking system, with repeated testing used to refine factors such as accessibility, learnability, player positioning and social comfort. The project concluded with the team presenting the final Rhythm Rush concept, our research process, prototype development and validation findings."
             ],
             collaborators: ['Aidan Ryder', 'Amarie Fasoro', 'Ikem Enebeli', 'Ruaridh Murdoch', 'Yousuf Shahabuddin'],
             outputs: [
