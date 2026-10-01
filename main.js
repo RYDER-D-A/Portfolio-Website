@@ -115,7 +115,10 @@ const projects = [
         page: {
             image: 'Assets/Gizmo.jpg',
             paragraphs: [
-                "Placeholder description for the Gizmo project."
+                "Gizmo was a two person project in which we had to design an interactive electromechanical device. Me and my teammate came up with a playful skill checking machine based on RPG games.",
+                "There were four main inputs: a lever, button/mic, capacitive touch sensor and a ToF sensor. These controlled the main parts of the device: the Wheel of Luck & Slides of Emotion, Insanity Tower, Broken Sign and Magic Diamonds. The different parts also interacted with each other. For example, when the lever was pulled and the wheel and slides were spinning, the lights on the Insanity Tower would also light up. If the user screamed loud enough to reach the maximum insanity level, the other parts of the system would go haywire.",
+                "The code used enums, functions and state machines to keep the different systems modular. I also avoided delays by using millis(), which meant the different parts could run and react to each other at the same time.",
+                "My part in the project was designing the Insanity Tower, the mechanical side of the Magic Diamonds, the electronics and most of the code. I also worked on integrating the code so that the separate parts could work together as one system."
             ],
             collaborators: ['Aidan Ryder', 'Mayli Jones'],
             outputs: [
