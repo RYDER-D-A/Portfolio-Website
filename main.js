@@ -24,7 +24,7 @@ const projects = [
         }
     },
     {
-        name: 'Prosthetic Running Leg',
+        name: 'Prosthetic Running Blade',
         featured: true,
         type: 'Individual',
         details: 'Structural Analysis • Modal Analysis • Fatigue Analysis • Design Optimisation',
@@ -243,13 +243,11 @@ function renderCarousel() {
 
 renderCarousel();
 
-// Fade/draw elements in the first time they scroll into view
+// Fade/draw elements in when they scroll into view, and reset them once they leave
+// (including when switching to another page) so the animation replays next time
 const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-        }
+        entry.target.classList.toggle('visible', entry.isIntersecting);
     });
 }, { threshold: 0.3 });
 
