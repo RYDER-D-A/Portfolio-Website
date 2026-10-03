@@ -4,6 +4,7 @@ const screens = document.querySelectorAll('.screen');
 const projects = [
     {
         name: 'Axis Pro',
+        featured: true,
         type: 'Group',
         details: 'Product Design • DFMA • Mechatronics',
         page: {
@@ -24,6 +25,7 @@ const projects = [
     },
     {
         name: 'Prosthetic Running Leg',
+        featured: true,
         type: 'Individual',
         details: 'Structural Analysis • Modal Analysis • Fatigue Analysis • Design Optimisation',
         page: {
@@ -73,6 +75,7 @@ const projects = [
     },
     {
         name: 'PID Segway',
+        hidden: true,
         type: 'Group',
         details: 'Control Systems · PID Control · Embedded Systems',
         page: {
@@ -88,6 +91,7 @@ const projects = [
     },
     {
         name: 'Aviation Seating Industry',
+        featured: true,
         type: 'Group',
         details: 'Research · Systems Design · Sustainable Design',
         page: {
@@ -110,6 +114,7 @@ const projects = [
     },
     {
         name: 'Gizmo',
+        featured: true,
         type: 'Group',
         details: 'Mechatronics · Embedded Systems · Interaction Design',
         page: {
@@ -129,6 +134,7 @@ const projects = [
     },
     {
         name: 'Rhythm Rush',
+        featured: true,
         type: 'Group',
         details: 'User Research · Human centred Design · Prototyping',
         page: {
@@ -190,8 +196,10 @@ function showProjectDetail(project) {
     showScreen('project-detail');
 }
 
+const visibleProjects = projects.filter(project => !project.hidden);
+
 function renderProjects() {
-    projectsBody.innerHTML = projects.map((project, index) => `
+    projectsBody.innerHTML = visibleProjects.map((project, index) => `
         <div class="project-row" data-index="${index}">
             <span class="col-name">${project.name}</span>
             <span class="col-type">${project.type}</span>
@@ -201,12 +209,57 @@ function renderProjects() {
 
     projectsBody.querySelectorAll('.project-row').forEach(row => {
         row.addEventListener('click', () => {
-            showProjectDetail(projects[row.dataset.index]);
+            showProjectDetail(visibleProjects[row.dataset.index]);
         });
     });
 }
 
 renderProjects();
+
+const carouselTrack = document.getElementById('carousel-track');
+const featuredProjects = visibleProjects.filter(project => project.featured);
+
+function renderCarousel() {
+    carouselTrack.innerHTML = featuredProjects.map((project, index) => `
+        <button class="carousel-card reveal" data-index="${index}">
+            <span class="carousel-image"><img src="${encodeURI(project.page.image)}" alt="" loading="lazy"></span>
+            <span class="carousel-name">${project.name}</span>
+        </button>
+    `).join('');
+
+    carouselTrack.querySelectorAll('.carousel-card').forEach(card => {
+        card.addEventListener('click', () => {
+            showProjectDetail(featuredProjects[card.dataset.index]);
+        });
+    });
+
+    document.querySelectorAll('.carousel-btn').forEach(button => {
+        const direction = button.classList.contains('carousel-btn--prev') ? -1 : 1;
+        button.addEventListener('click', () => {
+            carouselTrack.scrollBy({ left: direction * carouselTrack.clientWidth * 0.8, behavior: 'smooth' });
+        });
+    });
+}
+
+renderCarousel();
+
+// Fade/draw elements in the first time they scroll into view
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Build the email link at runtime so the plain address isn't in the HTML for scrapers
+const contactEmail = document.getElementById('contact-email');
+const emailAddress = `${contactEmail.dataset.user}@${contactEmail.dataset.domain}`;
+contactEmail.href = `mailto:${emailAddress}`;
+contactEmail.textContent = emailAddress;
 
 navButtons.forEach(button => {
     button.addEventListener('click', () => {

@@ -21,20 +21,64 @@
 		</header>
 		<main>
 			<section id="home" class="screen">
-				<div class="title">
-					<h1>Aidan Ryder</h1>
-					<h2>Design Engineer</h2>
+				<div class="home-hero">
+					<div class="title">
+						<h1>Aidan Ryder</h1>
+						<h2>Design Engineer</h2>
+					</div>
+					<div class="home-card">
+						<div class="line"></div>
+						<p>
+							Hi, my name is Aidan. I'm a
+							design engineer at Imperial
+							College London.
+						</p>
+					</div>
+					<div class="home-image-frame">
+						<img src="Assets/image 125.png" alt="Aidan Ryder working" class="home-image">
+					</div>
 				</div>
-				<div class="home-card">
-					<div class="line"></div>
-					<p>
-						Hi, my name is Aidan. I'm a
-						design engineer at Imperial
-						College London.
-					</p>
+				<div class="skills">
+					<div class="skill-group reveal">
+						<div class="skill-line"></div>
+						<div class="skill-content">
+							<h3>Design Skills</h3>
+							<ul>
+								<li>CAD</li>
+								<li>Circuit Design</li>
+								<li>Mechanical Design</li>
+								<li>System Design</li>
+								<li>Business Modelling</li>
+								<li>Branding</li>
+								<li>Human Centred Design</li>
+							</ul>
+						</div>
+					</div>
+					<div class="skill-group reveal">
+						<div class="skill-line"></div>
+						<div class="skill-content">
+							<h3>Software Skills</h3>
+							<ul>
+								<li>Figma</li>
+								<li>Fusion 360</li>
+								<li>Ansys Fluent</li>
+								<li>Ansys Static Structural</li>
+								<li>Ansys Modal</li>
+								<li>Overleaf</li>
+								<li>MATLAB</li>
+								<li>Visual Studio Code</li>
+								<li>Notion</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div class="home-image-frame">
-					<img src="Assets/image 125.png" alt="Aidan Ryder working" class="home-image">
+				<div class="top-projects">
+					<h2 class="top-projects-title reveal">Top Projects</h2>
+					<div class="carousel">
+						<button class="carousel-btn carousel-btn--prev" aria-label="Previous projects">&larr;</button>
+						<div class="carousel-track" id="carousel-track"></div>
+						<button class="carousel-btn carousel-btn--next" aria-label="Next projects">&rarr;</button>
+					</div>
 				</div>
 			</section>
 			<section id="projects" class="screen hidden">
@@ -72,6 +116,27 @@
 					<p class="project-collaborators" id="project-collaborators"></p>
 			</section>
 			<section id="about" class="screen hidden"></section>
-			<section id="contact" class="screen hidden"></section>
+			<section id="contact" class="screen hidden">
+					<div class="page-title">
+						<h1>Contact</h1>
+					</div>
+					<div class="contact-card">
+						<p>
+							I'm always happy to talk about design engineering,
+							projects or opportunities. Feel free to get in touch.
+						</p>
+						<div class="line"></div>
+						<ul class="contact-links">
+							<li>
+								<span class="contact-label">Email</span>
+								<a id="contact-email" data-user="aidanryder01" data-domain="gmail.com">aidanryder01 [at] gmail.com</a>
+							</li>
+							<li>
+								<span class="contact-label">CV</span>
+								<a href="Files/AidanRyderCV.pdf" target="_blank" rel="noopener">Download CV</a>
+							</li>
+						</ul>
+					</div>
+			</section>
 		</main>
     </body>
