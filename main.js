@@ -193,10 +193,33 @@ function showProjectDetail(project) {
         `<li><a href="${encodeURI(o.href).replace(/&/g, '&amp;')}" target="_blank" rel="noopener">${o.label}</a></li>`
     ).join('');
 
-    showScreen('project-detail');
+    showScreen('project-detail', 'projects');
 }
 
 const visibleProjects = projects.filter(project => !project.hidden);
+
+// Each page gets its own address (e.g. #about, #projects/rhythm-rush) so the back button,
+// refreshing and sharing links all work
+const slugify = name => name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const projectHash = project => `#projects/${slugify(project.name)}`;
+const pageTitles = { home: 'Aidan Ryder | Design Engineer', projects: 'Projects | Aidan Ryder', about: 'About | Aidan Ryder', contact: 'Contact | Aidan Ryder' };
+
+function route() {
+    const [page, slug] = location.hash.slice(1).split('/');
+
+    if (page === 'projects' && slug) {
+        const project = visibleProjects.find(p => slugify(p.name) === slug);
+        if (project) {
+            showProjectDetail(project);
+            document.title = `${project.name} | Aidan Ryder`;
+            return;
+        }
+    }
+
+    const id = pageTitles[page] ? page : 'home';
+    showScreen(id);
+    document.title = pageTitles[id];
+}
 
 function renderProjects() {
     projectsBody.innerHTML = visibleProjects.map((project, index) => `
@@ -209,7 +232,7 @@ function renderProjects() {
 
     projectsBody.querySelectorAll('.project-row').forEach(row => {
         row.addEventListener('click', () => {
-            showProjectDetail(visibleProjects[row.dataset.index]);
+            location.hash = projectHash(visibleProjects[row.dataset.index]);
         });
     });
 }
@@ -229,7 +252,7 @@ function renderCarousel() {
 
     carouselTrack.querySelectorAll('.carousel-card').forEach(card => {
         card.addEventListener('click', () => {
-            showProjectDetail(featuredProjects[card.dataset.index]);
+            location.hash = projectHash(featuredProjects[card.dataset.index]);
         });
     });
 
@@ -261,6 +284,9 @@ contactEmail.textContent = emailAddress;
 
 navButtons.forEach(button => {
     button.addEventListener('click', () => {
-        showScreen(button.dataset.target);
+        location.hash = button.dataset.target === 'home' ? '' : button.dataset.target;
     });
 });
+
+window.addEventListener('hashchange', route);
+route();
