@@ -593,6 +593,142 @@
     color: #BD0022;
 }
 
+/* ---------- About ---------- */
+.about-body {
+    margin: 22vh 6% 0;
+    padding-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 8vh;
+}
+
+.about-intro {
+    display: flex;
+    gap: 1.2em;
+}
+
+.about-line {
+    flex-shrink: 0;
+    width: 3px;
+    background-color: #BD0022;
+}
+
+.about-intro h3,
+.about-card h3 {
+    font-size: var(--font-md);
+    font-weight: 400;
+}
+
+.about-intro h3 {
+    margin-bottom: 0.6em;
+}
+
+.about-intro p {
+    max-width: 62rem;
+    font-size: var(--font-sm);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.about-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2vw;
+}
+
+.about-photos figcaption {
+    margin-top: 0.7em;
+    font-size: 0.85rem;
+    font-weight: 300;
+    opacity: 0.6;
+}
+
+.about-photo {
+    aspect-ratio: 1;
+    border: 3px solid #BD0022;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #3a3a3a;
+}
+
+.about-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.about-photo:hover img {
+    transform: scale(1.05);
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 2vw;
+    align-items: stretch;
+}
+
+.about-card {
+    background-color: #151515;
+    border-top: 3px solid #BD0022;
+    border-radius: 6px;
+    padding: 2rem;
+}
+
+.about-card h3 {
+    margin-bottom: 0.9em;
+}
+
+.about-card p {
+    font-size: var(--font-sm);
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.about-card--scholar {
+    display: flex;
+    gap: 1.8rem;
+    align-items: flex-start;
+}
+
+.about-card--scholar > div:first-child {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-photo--portrait {
+    display: block;
+    flex: none;
+    width: 38%;
+    aspect-ratio: 2 / 3;
+}
+
+/* Fade-up when scrolled into view (uses the shared .reveal observer) */
+.about-body .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-body .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.about-photos figure:nth-child(2) { transition-delay: 0.1s; }
+.about-photos figure:nth-child(3) { transition-delay: 0.2s; }
+.about-photos figure:nth-child(4) { transition-delay: 0.3s; }
+.about-cards .about-card + .about-card { transition-delay: 0.15s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .about-body .reveal {
+        transition: none;
+    }
+}
+
 /* ---------- Tablets & phones ---------- */
 @media (max-width: 900px) {
     :root {
@@ -688,6 +824,35 @@
 
     .home-image-frame {
         margin-top: 2rem;
+    }
+
+    /* About */
+    .about-body {
+        margin: 0;
+        padding-bottom: 0;
+        gap: 3rem;
+    }
+
+    .about-photos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 0.75rem;
+    }
+
+    .about-cards {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .about-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .about-card--scholar {
+        gap: 1.25rem;
+    }
+
+    .about-photo--portrait {
+        width: 35%;
     }
 
     /* Contact */
