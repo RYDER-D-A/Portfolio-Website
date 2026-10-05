@@ -9,6 +9,14 @@ const projects = [
         details: 'Product Design • DFMA • Mechatronics',
         page: {
             image: 'Assets/AxisProMain.jpg',
+            gallery: [
+                { src: 'Assets/AxisPro/Lowfi.jpg', caption: 'Low-fidelity prototype' },
+                { src: 'Assets/AxisPro/Painting2.jpg', caption: 'Hands-on experience: painting miniatures ourselves to find pain points' },
+                { src: 'Assets/AxisPro/working.jpg', caption: 'Electronics and mechanism testing' },
+                { src: 'Assets/AxisPro/pde photo.jpeg.jpg', caption: 'Mechanism assembly sequence' },
+                { src: 'Assets/AxisPro/image 118.jpg', caption: 'Technical drawing' },
+                { src: 'Assets/AxisPro/Screenshot 2026-06-18 at 01.05.19 1.jpg', caption: 'Final prototype in use' }
+            ],
             paragraphs: [
                 "This project involved detailed research into an underserved user group and the development of an electromechanical product designed around their needs. Through iterative design and user testing, we developed Axis Pro, a three-axis platform for holding miniature models during hobbyist painting.",
                 "The final project included a working prototype, branding strategy, business case, DFMA analysis and a project video. As the designated CTO, I led the electromechanical design and DFMA aspects of the project.",
@@ -139,6 +147,7 @@ const projects = [
         details: 'User Research · Human centred Design · Prototyping',
         page: {
             image: 'Assets/Rhythm Rush.jpg',
+            video: 'Assets/Rhythm Rush/66b97f26cc315f814df09b1b2e89aba88e772f2b.mp4',
             paragraphs: [
                 "Rhythm Rush was split into two 10-week stages: a research phase and a prototyping phase.",
                 "The research phase began with the broad brief of urban play, requiring our team to identify a meaningful user group and opportunity area. We initially focused on elderly users, but after reaching a dead end we made a rapid decision to pivot towards digital urban play. This led us to study Outernet London, where I personally led over 20 public interviews alongside Ruaridh, supported by behavioural observations. We found that while many people said they were open to interacting with strangers, very few actually initiated interaction in public spaces. Further research suggested that people first needed to perceive a setting as inherently social, such as a bar, concert or event, before interaction felt natural.",
@@ -160,13 +169,20 @@ const projectsBody = document.getElementById('projects-body');
 const projectDetailTitle = document.getElementById('project-detail-title');
 const projectDetailImage = document.getElementById('project-detail-image');
 const projectDetailText = document.getElementById('project-detail-text');
-const projectCollaborators = document.getElementById('project-collaborators');const projectOutputs = document.getElementById('project-outputs');
+const projectCollaborators = document.getElementById('project-collaborators');
+const projectOutputs = document.getElementById('project-outputs');
+const projectGallery = document.getElementById('project-gallery');
+const galleryTrack = document.getElementById('gallery-track');
+const projectVideo = document.getElementById('project-video');
+const projectVideoPlayer = document.getElementById('project-video-player');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function showScreen(id, navId = id) {
     screens.forEach(screen => {
         screen.classList.toggle('hidden', screen.id !== id);
     });
     document.getElementById(id).scrollTop = 0;
+    if (id !== 'project-detail') projectVideoPlayer.pause();
 
     navButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.target === navId);
@@ -192,6 +208,30 @@ function showProjectDetail(project) {
     projectOutputs.innerHTML = outputs.map(o =>
         `<li><a href="${encodeURI(o.href).replace(/&/g, '&amp;')}" target="_blank" rel="noopener">${o.label}</a></li>`
     ).join('');
+
+    // Looping muted video plays like a GIF; with reduced motion it waits for the viewer to press play
+    projectVideo.classList.toggle('hidden', !project.page.video);
+    if (project.page.video) {
+        projectVideoPlayer.src = encodeURI(project.page.video);
+        projectVideoPlayer.controls = prefersReducedMotion.matches;
+        if (!prefersReducedMotion.matches) projectVideoPlayer.play().catch(() => {});
+    } else {
+        projectVideoPlayer.pause();
+        projectVideoPlayer.removeAttribute('src');
+        projectVideoPlayer.load();
+    }
+
+    // Gallery uses the same card styling as the home page carousel; clicking opens the full image
+    const gallery = project.page.gallery || [];
+    projectGallery.classList.toggle('hidden', gallery.length === 0);
+    galleryTrack.innerHTML = gallery.map(item => `
+        <a class="carousel-card reveal" href="${encodeURI(item.src)}" target="_blank" rel="noopener">
+            <span class="carousel-image"><img src="${encodeURI(item.src)}" alt="${item.caption || project.name}" loading="lazy"></span>
+            ${item.caption ? `<span class="carousel-name">${item.caption}</span>` : ''}
+        </a>
+    `).join('');
+    galleryTrack.scrollLeft = 0;
+    galleryTrack.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     showScreen('project-detail', 'projects');
 }
@@ -255,16 +295,20 @@ function renderCarousel() {
             location.hash = projectHash(featuredProjects[card.dataset.index]);
         });
     });
-
-    document.querySelectorAll('.carousel-btn').forEach(button => {
-        const direction = button.classList.contains('carousel-btn--prev') ? -1 : 1;
-        button.addEventListener('click', () => {
-            carouselTrack.scrollBy({ left: direction * carouselTrack.clientWidth * 0.8, behavior: 'smooth' });
-        });
-    });
 }
 
 renderCarousel();
+
+// Arrow buttons scroll whichever carousel they belong to (home top projects and project galleries)
+document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    carousel.querySelectorAll('.carousel-btn').forEach(button => {
+        const direction = button.classList.contains('carousel-btn--prev') ? -1 : 1;
+        button.addEventListener('click', () => {
+            track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: 'smooth' });
+        });
+    });
+});
 
 // Fade/draw elements in when they scroll into view, and reset them once they leave
 // (including when switching to another page) so the animation replays next time
