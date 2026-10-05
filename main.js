@@ -127,6 +127,12 @@ const projects = [
         details: 'Mechatronics · Embedded Systems · Interaction Design',
         page: {
             image: 'Assets/Gizmo.jpg',
+            gallery: [
+                { src: 'Assets/Gizmo/LM8A5994 1-web.jpg', caption: 'Final device: Perception Test using the ToF sensor and Magic Diamonds' },
+                { src: 'Assets/Gizmo/LM8A6002 1-web.jpg', caption: 'Pulling the lever to spin the Wheel of Luck and Slides of Emotion' },
+                { src: 'Assets/Gizmo/Frame 1.png', caption: 'CAD: lever-driven Wheel of Luck and Slides of Emotion mechanism' },
+                { src: 'Assets/Gizmo/Frame 2.png', caption: 'CAD: Magic Diamonds rise mechanism' }
+            ],
             paragraphs: [
                 "Gizmo was a two person project in which we had to design an interactive electromechanical device. Me and my teammate came up with a playful skill checking machine based on RPG games.",
                 "There were four main inputs: a lever, button/mic, capacitive touch sensor and a ToF sensor. These controlled the main parts of the device: the Wheel of Luck & Slides of Emotion, Insanity Tower, Broken Sign and Magic Diamonds. The different parts also interacted with each other. For example, when the lever was pulled and the wheel and slides were spinning, the lights on the Insanity Tower would also light up. If the user screamed loud enough to reach the maximum insanity level, the other parts of the system would go haywire.",
