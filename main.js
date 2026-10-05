@@ -148,6 +148,13 @@ const projects = [
         page: {
             image: 'Assets/Rhythm Rush.jpg',
             video: 'Assets/Rhythm Rush/66b97f26cc315f814df09b1b2e89aba88e772f2b.mp4',
+            gallery: [
+                { src: 'Assets/Rhythm Rush/image 2.jpg', caption: 'Outernet London, where we carried out our interviews and observations' },
+                { src: 'Assets/Rhythm Rush/image 4.jpg', caption: 'Public experiment: testing multiplayer games as a social lubricant' },
+                { src: 'Assets/Rhythm Rush/danceversus.jpg', caption: 'Rhythm Rush concept: players dancing to match on-screen poses' },
+                { src: 'Assets/Rhythm Rush/image 88.jpg', caption: 'Testing two-player body tracking' },
+                { src: 'Assets/Rhythm Rush/image 87.jpg', caption: 'Testing the motion-tracked prototype on a large screen' }
+            ],
             paragraphs: [
                 "Rhythm Rush was split into two 10-week stages: a research phase and a prototyping phase.",
                 "The research phase began with the broad brief of urban play, requiring our team to identify a meaningful user group and opportunity area. We initially focused on elderly users, but after reaching a dead end we made a rapid decision to pivot towards digital urban play. This led us to study Outernet London, where I personally led over 20 public interviews alongside Ruaridh, supported by behavioural observations. We found that while many people said they were open to interacting with strangers, very few actually initiated interaction in public spaces. Further research suggested that people first needed to perceive a setting as inherently social, such as a bar, concert or event, before interaction felt natural.",
@@ -159,7 +166,8 @@ const projects = [
             collaborators: ['Aidan Ryder', 'Amarie Fasoro', 'Ikem Enebeli', 'Ruaridh Murdoch', 'Yousuf Shahabuddin'],
             outputs: [
                 { label: 'Research Report', href: 'Files/Rhythm Rush Research.pdf' },
-                { label: 'Prototyping Report', href: 'Files/Rhythm Rush Prototyping.pdf' }
+                { label: 'Prototyping Report', href: 'Files/Rhythm Rush Prototyping.pdf' },
+                { label: 'Presentation', href: 'Files/Rhythm Rush Presentation.pdf' }
             ]
         }
     }
