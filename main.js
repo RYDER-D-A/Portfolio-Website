@@ -20,7 +20,8 @@ const projects = [
             paragraphs: [
                 "This project involved detailed research into an underserved user group and the development of an electromechanical product designed around their needs. Through iterative design and user testing, we developed Axis Pro, a three-axis platform for holding miniature models during hobbyist painting.",
                 "The final project included a working prototype, branding strategy, business case, DFMA analysis and a project video. As the designated CTO, I led the electromechanical design and DFMA aspects of the project.",
-                "One of the main mechanical challenges was integrating two electromechanical mechanisms into a platform that also had to move vertically, this required a lot of mechanism placement considerations to also prevent bulkiness."
+                "One of the main mechanical challenges was integrating two electromechanical mechanisms into a platform that also had to move vertically, this required a lot of mechanism placement considerations to also prevent bulkiness.",
+                "The project outputs contained two visual reports, one written report and a video showcasing both the product and the creation of the product."
             ],
             collaborators: ['Aidan Ryder', 'Lucian Brand', 'Aaron Xu', 'Simon Xia'],
             outputs: [
